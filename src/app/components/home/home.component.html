@@ -1,0 +1,5 @@
+<div *ngFor="let curso of cursos">
+  <h3>{{ curso.titulo }}</h3>
+  <img [src]="curso.imagem" alt="{{ curso.titulo }}" />
+  <p>{{ curso.descricao }}</p>
+</div>

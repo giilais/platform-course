@@ -1,0 +1,9 @@
+<div *ngIf="curso">
+  <h2>{{ curso.titulo }}</h2>
+  <img [src]="curso.imagem" alt="{{ curso.titulo }}" />
+  <p>{{ curso.descricaoCompleta }}</p>
+  <ul>
+    <li *ngFor="let topico of curso.topicos">{{ topico }}</li>
+  </ul>
+  <button (click)="inscrever()">Inscrever-se</button>
+</div>

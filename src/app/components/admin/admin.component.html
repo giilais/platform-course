@@ -1,0 +1,9 @@
+<div>
+  <h2>Administração</h2>
+  <button (click)="adicionarCurso(novoCurso)">Adicionar Curso</button>
+  <div *ngFor="let curso of cursos">
+    <h3>{{ curso.titulo }}</h3>
+    <button (click)="removerCurso(curso.id)">Remover</button>
+    <button (click)="editarCurso(curso.id)">Editar</button>
+  </div>
+</div>
