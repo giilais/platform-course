@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DetalhesCursoComponent } from './components/detalhes-curso/detalhes-curso.component';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { AdminComponent } from './components/admin/admin.component';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    FormsModule
+    FormsModule, BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
