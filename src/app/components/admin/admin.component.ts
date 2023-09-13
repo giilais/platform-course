@@ -16,7 +16,7 @@ export class AdminComponent {
   }
 
   ngOnInit() {
-    this.cursos = this.cursoService.getCursos();
+    //this.cursos = this.cursoService.getCursos();
   }
 
   adicionarCurso(novoCurso: any) {

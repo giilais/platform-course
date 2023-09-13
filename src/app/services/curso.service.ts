@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CursoService {
-  private apiUrl = 'http://localhost:3001/cursos'; 
+  private apiUrl = 'http://localhost:3001/cursos';
 
   constructor(private http: HttpClient) {}
 
@@ -39,8 +39,8 @@ export class CursoService {
     return this.http.post<any>(`${this.apiUrl}/inscrever`, { cursoId });
   }
 
-  getCursos(): any[] {
-    return this.cursos;
+  getCursos(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
   getDetalhesCurso(cursoId: number): any {

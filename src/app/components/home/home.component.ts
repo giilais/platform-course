@@ -14,6 +14,8 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.cursos = this.cursoService.getCursos();
+    this.cursoService.getCursos().subscribe((data: any[]) => {
+      this.cursos = data;
+    });
   }
 }
