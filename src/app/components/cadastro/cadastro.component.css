@@ -1,0 +1,52 @@
+.div-page-register {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 200px;
+}
+
+.div-register {
+  background-color: rgb(240, 203, 255);
+  height: 600px;
+  width: 500px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.div-register h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 80px;
+  color: #fff;
+}
+
+.div-register input {
+  font-family: "Montserrat", sans-serif;
+  height: 60px;
+  width: 300px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.div-register button {
+  height: 60px;
+  width: 300px;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  background-color: rgb(55, 0, 77);
+  color: #fff;
+  border: none;
+}
+
+.img-register {
+  height: 700px;
+  width: 600px;
+}

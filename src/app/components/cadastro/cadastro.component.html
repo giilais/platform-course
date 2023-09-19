@@ -1,6 +1,18 @@
-<div>
-  <h2>Cadastro</h2>
-  <input [(ngModel)]="username" placeholder="Username" />
-  <input [(ngModel)]="password" type="password" placeholder="Password" />
-  <button (click)="cadastrar()">Cadastrar</button>
+<div class="div-page-register">
+  <div class="div-register">
+    <h2>Cadastro</h2>
+    <input [(ngModel)]="username" placeholder="Username" />
+    <br />
+    <input [(ngModel)]="password" type="password" placeholder="Password" />
+    <br />
+    <button (click)="cadastrar()">Cadastrar</button>
+  </div>
+
+  <div>
+    <img
+      src="../../../assets/img/singup.jpg"
+      alt="Imagem colorida com um celular e dois persagens; imagem de vectorjuice no Freepik"
+      class="img-register"
+    />
+  </div>
 </div>
