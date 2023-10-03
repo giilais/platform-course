@@ -7,6 +7,7 @@ import { CursoService } from '../../services/curso.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  
   cursos: any[];
 
   constructor(private cursoService: CursoService) {

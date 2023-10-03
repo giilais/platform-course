@@ -1,10 +1,13 @@
 <div class="div-page-register">
   <div class="div-register">
     <h2>Cadastro</h2>
-    <input [(ngModel)]="username" placeholder="Username" />
+    <input [(ngModel)]="nome" placeholder="Nome" />
     <br />
-    <input [(ngModel)]="password" type="password" placeholder="Password" />
+    <input [(ngModel)]="email" placeholder="Email" />
     <br />
+    <input [(ngModel)]="senha" type="password" placeholder="Senha" />
+    <br />
+    <p>Já tem cadastro? <a routerLink="/login">Login</a></p>
     <button (click)="cadastrar()">Cadastrar</button>
   </div>
 

@@ -7,15 +7,22 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  username: string;
-  password: string;
+  email: string;
+  senha: string;
 
   constructor(private authService: AuthService) {
-    this.username = '';
-    this.password = '';
+    this.email = '';
+    this.senha = '';
   }
 
   login() {
-    this.authService.login(this.username, this.password);
+    this.authService.login(this.email, this.senha).subscribe(
+      (response) => {
+        alert('Entrando no sistema...');
+      },
+      (error) => {
+        console.error('Erro ao fazer login:', error);
+      }
+    );
   }
 }

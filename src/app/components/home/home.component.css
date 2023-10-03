@@ -1,0 +1,49 @@
+.cards-cursos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.card {
+  background-color: rgba(55, 0, 77, 0.5);
+  margin-bottom: 20px;
+  border-radius: 20px;
+  height: 300px;
+  width: 500px;
+  display: flex;
+  align-content: space-around;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.card-tittle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  color: #fff;
+}
+.card-description {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.card-button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #000000;
+  border-radius: 20px;
+  height: 50px;
+  width: 150px;
+}
+
+.card-button:hover {
+  color: #000;
+  background-color: #ffffff;
+  font-weight: 600;
+  transition: 700ms;
+  border-color: #ffffff;
+}
