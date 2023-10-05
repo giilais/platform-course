@@ -1,7 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CursoService } from 'src/app/services/curso.service';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-detalhes-curso',
@@ -10,41 +9,38 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DetalhesCursoComponent {
   curso: any;
+  cursos: any[];
 
-  constructor(
-    private cursoService: CursoService,
-    private authService: AuthService,
-    private router: Router
-  ) {
+  constructor(private cursoService: CursoService, private http: HttpClient) {
     this.curso = [];
+    this.cursos = [];
   }
 
   ngOnInit() {
-    // Supondo que você tenha uma rota que fornece o ID do curso
-    const cursoId = 1; /* Obtenha o ID do curso da rota ou de algum lugar */
+    this.cursoService.getCursos().subscribe((data: any[]) => {
+      this.cursos = data;
+    });
+    
+    const cursoId = 1;
     this.curso = this.cursoService.getDetalhesCurso(cursoId);
   }
 
-  inscrever() {
-    // Verifique se o usuário está autenticado antes de permitir a inscrição
-    if (this.authService.isUsuarioAutenticado()) {
-      const cursoId = this.curso.id; // Supondo que o curso tenha uma propriedade 'id'
+  cadastrarUsuario(cursoId: number) {
+    //const usuarioId = this.getIdDoUsuario(); // Substitua pelo ID do usuário que deseja cadastrar
+    const usuarioId = 5;
 
-      // Chame o serviço para inscrever o usuário no curso
-      this.cursoService.inscreverUsuarioNoCurso(cursoId).subscribe(
-        (resultado: any) => {
-          console.log('Usuário inscrito com sucesso!', resultado);
+    this.http
+      .post('http://localhost:3001/registerInCourse', {
+        usuario_id: usuarioId,
+        curso_id: cursoId,
+      })
+      .subscribe(
+        (response) => {
+          console.log('Usuário cadastrado no curso com sucesso', response);
         },
-        (erro: any) => {
-          console.error('Erro ao inscrever usuário no curso:', erro);
+        (error) => {
+          console.error('Erro ao cadastrar usuário no curso', error);
         }
       );
-    } else {
-      // Se o usuário não estiver autenticado, redirecione para a página de login
-      console.error(
-        'Usuário não está autenticado. Redirecionando para a página de login...'
-      );
-      this.router.navigate(['/login']);
-    }
   }
 }

@@ -1,21 +1,51 @@
-<div>
-  <h2>Administração</h2>
-  <button routerLink="/admin/adicionarCurso">Adicionar Curso</button>
-  <div *ngFor="let curso of cursos">
+<header class="navbar">
+  <nav id="menu-h">
+    <ul>
+      <li>
+        <a routerLink="/home"> Home </a>
+      </li>
+
+      <li>
+        <a routerLink="/perfil">Perfil</a>
+      </li>
+
+      <li><a routerLink="/admin">Admin</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="adm-page">
+  <div class="adm-button">
+    <h2>Administração</h2>
+    <button routerLink="/admin/adicionarCurso">Adicionar Curso</button>
+  </div>
+
+  <div class="hr">
+    <hr class="hr-solid">
+  </div>
+
+
+  <div *ngFor="let curso of cursos" class="adm-page-card">
     <div class="cards-cursos">
       <div class="card">
-        <img [src]="curso.imagem" alt="{{ curso.titulo }}" />
+        <img
+          [src]="'data:image/jpeg;base64,' + curso.imagem"
+          alt="{{ curso.titulo }}"
+        />
         <div class="card-content">
           <h2 class="card-tittle">{{ curso.titulo }}</h2>
           <p class="card-description">
             {{ curso.descricao }}
           </p>
-          <button class="card-button" (click)="excluirCurso(curso.id)">
-            Excluir
-          </button>
-          <button class="card-button" routerLink="/admin/editarCurso">
-            Editar
-          </button>
+
+          <div class="btns">
+            <button class="card-button" (click)="confirmarExclusao(curso.id)">
+              Excluir
+            </button>
+            <button class="card-button" routerLink="/admin/editarCurso">
+              Editar
+            </button>
+          </div>
         </div>
       </div>
     </div>

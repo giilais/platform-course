@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,10 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   private isAuthenticated: boolean = false;
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
 
   cadastrarUsuario(
     nome: string,
@@ -38,21 +43,12 @@ export class AuthService {
     );
   }
 
-  logout() {
-    this.isAuthenticated = false;
-  }
-
-  isLoggedIn(): boolean {
-    return this.isAuthenticated;
-  }
-
-  // Verifica se o usuário está autenticado
-  isUsuarioAutenticado() {
-    return this.isAuthenticated;
-  }
-
-  isAdmin(): boolean {
-    // Retorna true se o usuário for um administrador, false caso contrário
-    return false;
+  getUserIdFromToken() {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken: any = jwt_decode(token);
+      return decodedToken.userId;
+    }
+    return null;
   }
 }

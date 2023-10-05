@@ -9,7 +9,7 @@ import { CursoService } from 'src/app/services/curso.service';
 })
 export class EditarCursoComponent {
   curso = {
-    id: null, // Inicialize com o ID do curso que está sendo editado
+    id: null,
     titulo: '',
     descricao: '',
     descricaoCompleta: '',
@@ -22,7 +22,7 @@ export class EditarCursoComponent {
     private cursoService: CursoService
   ) {
     this.route.params.subscribe((params) => {
-      this.curso.id = params['id']; // Captura o ID do curso da URL
+      this.curso.id = params['id'];
     });
   }
 

@@ -12,12 +12,7 @@ export class AppComponent {
   isLoggedIn: boolean; 
 
   constructor(public authService: AuthService) {
-    this.isLoggedIn = this.authService.isLoggedIn(); 
+    this.isLoggedIn = true; 
   }
 
-  // Função para fazer logout
-  logout() {
-    this.authService.logout();
-    this.isLoggedIn = false;
-  }
 }

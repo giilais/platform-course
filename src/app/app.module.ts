@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CursoService } from './services/curso.service';
 import { HeaderComponent } from './components/header/header.component';
 import { IgxCardModule } from 'igniteui-angular';
+import { AdicionarCursoComponent } from './components/adicionar-curso/adicionar-curso.component';
+import { EditarCursoComponent } from './components/editar-curso/editar-curso.component';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { IgxCardModule } from 'igniteui-angular';
     PerfilUsuarioComponent,
     AdminComponent,
     HeaderComponent,
+    AdicionarCursoComponent,
+    EditarCursoComponent
   ],
   imports: [
     BrowserModule,

@@ -24,11 +24,20 @@ export class AdminComponent {
     this.cursoService.excluirCurso(cursoId).subscribe(
       (response) => {
         console.log('Curso excluído com sucesso!', response);
-        this.cursos = this.cursos.filter((curso) => curso.id !== cursoId); // Atualiza a lista de cursos após a exclusão
+        alert('Curso excluído com sucesso!'); // Exibe um alerta de sucesso
+        window.location.reload(); // Recarrega a página para atualizar a lista de cursos
       },
       (error) => {
         console.error('Erro ao excluir curso:', error);
+        alert('Erro ao excluir curso. Por favor, tente novamente.'); // Exibe um alerta de erro
       }
     );
+  }
+
+  confirmarExclusao(cursoId: number) {
+    const confirmacao = confirm('Tem certeza que deseja excluir este curso?');
+    if (confirmacao) {
+      this.excluirCurso(cursoId);
+    }
   }
 }

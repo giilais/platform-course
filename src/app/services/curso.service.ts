@@ -19,22 +19,20 @@ export class CursoService {
     },
   ];
 
-  // Método para adicionar um curso
-  adicionarCurso(curso: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/adicionar`, curso);
+  adicionarCurso(cursoData: any) {
+    return this.http.post(`${this.apiUrl}/adicionar`, cursoData, {
+      responseType: 'text',
+    });
   }
 
-  // Método para remover um curso
-  removerCurso(cursoId: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/remover/${cursoId}`);
+  editarCurso(cursoData: any) {
+    return this.http.put(`${this.apiUrl}/editar/${cursoData.id}`, cursoData);
   }
 
-  // Método para editar um curso
-  editarCurso(curso: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/editar/${curso.id}`, curso);
+  excluirCurso(cursoId: number) {
+    return this.http.delete(`${this.apiUrl}/excluir/${cursoId}`);
   }
 
-  // Método para inscrever o usuário em um curso
   inscreverUsuarioNoCurso(cursoId: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/inscrever`, { cursoId });
   }

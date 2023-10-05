@@ -34,4 +34,17 @@ export class AdicionarCursoComponent {
       }
     );
   }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    this.uploadImage(file);
+  }
+
+  uploadImage(file: File) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.curso.imagem = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
 }
