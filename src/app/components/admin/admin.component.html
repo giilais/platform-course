@@ -1,9 +1,23 @@
 <div>
   <h2>Administração</h2>
-  <button (click)="adicionarCurso(novoCurso)">Adicionar Curso</button>
+  <button routerLink="/admin/adicionarCurso">Adicionar Curso</button>
   <div *ngFor="let curso of cursos">
-    <h3>{{ curso.titulo }}</h3>
-    <button (click)="removerCurso(curso.id)">Remover</button>
-    <button (click)="editarCurso(curso.id)">Editar</button>
+    <div class="cards-cursos">
+      <div class="card">
+        <img [src]="curso.imagem" alt="{{ curso.titulo }}" />
+        <div class="card-content">
+          <h2 class="card-tittle">{{ curso.titulo }}</h2>
+          <p class="card-description">
+            {{ curso.descricao }}
+          </p>
+          <button class="card-button" (click)="excluirCurso(curso.id)">
+            Excluir
+          </button>
+          <button class="card-button" routerLink="/admin/editarCurso">
+            Editar
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

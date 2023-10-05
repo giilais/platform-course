@@ -1,0 +1,55 @@
+
+<div>
+  <h2>Adicionar Novo Curso</h2>
+  <form (ngSubmit)="adicionarCurso()">
+    <div>
+      <label for="titulo">Título:</label>
+      <input
+        type="text"
+        id="titulo"
+        [(ngModel)]="curso.titulo"
+        name="titulo"
+        required
+      />
+    </div>
+    <div>
+      <label for="descricao">Descrição:</label>
+      <textarea
+        id="descricao"
+        [(ngModel)]="curso.descricao"
+        name="descricao"
+        required
+      ></textarea>
+    </div>
+    <div>
+      <label for="descricaoCompleta">Descrição Completa:</label>
+      <textarea
+        id="descricaoCompleta"
+        [(ngModel)]="curso.descricaoCompleta"
+        name="descricaoCompleta"
+        required
+      ></textarea>
+    </div>
+    <div>
+      <label for="topicos">Tópicos:</label>
+      <input
+        type="text"
+        id="topicos"
+        [(ngModel)]="curso.topicos"
+        name="topicos"
+        required
+      />
+    </div>
+    <div>
+      <label for="imagem">Imagem (URL):</label>
+      <input
+        type="text"
+        id="imagem"
+        [(ngModel)]="curso.imagem"
+        name="imagem"
+        required
+      />
+    </div>
+    <button type="submit">Salvar Edições</button>
+  </form>
+</div>
