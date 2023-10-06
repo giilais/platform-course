@@ -28,7 +28,7 @@
           {{ curso.descricao }}
         </p>
         <div class="btn-card">
-          <button class="card-button" routerLink="/curso/:id">
+          <button class="card-button" [routerLink]="'/curso/'+curso.id">
             Ver detalhes
           </button>
         </div>

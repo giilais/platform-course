@@ -14,32 +14,31 @@
   </nav>
 </header>
 
-
 <div class="detalhes-page">
-  <div *ngFor="let curso of cursos">
-    <div class="cards-container">
-      <div class="card">
-        <img
-          [src]="'data:image/jpeg;base64,' + curso.imagem"
-          alt="{{ curso.titulo }}"
-        />
-        <hr class="solid" />
-        <h2>{{ curso.titulo }}</h2>
-        <p>
-          {{ curso.descricao }}
-        </p>
-        <p>
-          {{ curso.descricaoCompleta }}
-        </p>
-        <p>
-          Aulas:
-          {{ curso.topicos }}
-        </p>
-        <div class="btn-card">
-          <button class="card-button" (click)="cadastrarUsuario(curso.id)">
-            Cadastrar
-          </button>
-        </div>
+  <div *ngIf="curso" class="cards-container">
+    <div class="card">
+      <img
+        *ngIf="curso?.imagem"
+        [src]="'data:image/jpeg;base64,' + curso.imagem"
+        alt="{{ curso.titulo }}"
+        class="img-curso"
+      />
+      <hr class="solid" />
+      <h2>{{ curso.titulo }}</h2>
+      <p>
+        {{ curso.descricao }}
+      </p>
+      <p>
+        {{ curso.descricaoCompleta }}
+      </p>
+      <p>
+        Aulas:
+        {{ curso.topicos }}
+      </p>
+      <div class="btn-card">
+        <button class="card-button" (click)="cadastrarUsuario(curso.id)">
+          Cadastrar
+        </button>
       </div>
     </div>
   </div>

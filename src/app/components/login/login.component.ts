@@ -18,6 +18,12 @@ export class LoginComponent {
   login() {
     this.authService.login(this.email, this.senha).subscribe(
       (response) => {
+        // Obtem o usuário a partir do token
+        const usuario = this.authService.getUsuarioDoToken();
+  
+        // Salva o usuário localmente
+        this.authService.salvarUsuarioLocalmente(usuario);
+  
         alert('Entrando no sistema...');
       },
       (error) => {

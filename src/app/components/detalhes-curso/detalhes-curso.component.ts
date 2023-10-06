@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CursoService } from 'src/app/services/curso.service';
 
 @Component({
@@ -9,26 +10,38 @@ import { CursoService } from 'src/app/services/curso.service';
 })
 export class DetalhesCursoComponent {
   curso: any;
-  cursos: any[];
+  isAdmin: boolean = false;
 
-  constructor(private cursoService: CursoService, private http: HttpClient) {
-    this.curso = [];
-    this.cursos = [];
-  }
+  constructor(
+    private cursoService: CursoService,
+    private http: HttpClient,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.cursoService.getCursos().subscribe((data: any[]) => {
-      this.cursos = data;
+    this.route.params.subscribe((params) => {
+      const cursoId = +params['id'];
+      this.cursoService.getDetalhesCurso(cursoId).subscribe(
+        (curso) => {
+          this.curso = curso;
+        },
+        (error) => {
+          console.error('Erro ao obter detalhes do curso', error);
+        }
+      );
     });
-    
-    const cursoId = 1;
-    this.curso = this.cursoService.getDetalhesCurso(cursoId);
+
+    // Verificar se o usuário é admin
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+
+    if (isAdmin) {
+      this.isAdmin = true;
+    }
   }
 
   cadastrarUsuario(cursoId: number) {
-    //const usuarioId = this.getIdDoUsuario(); // Substitua pelo ID do usuário que deseja cadastrar
     const usuarioId = 5;
-
+    //const usuarioId = this.getIdDoUsuario(); // Substitua pelo ID do usuário que deseja cadastrar
     this.http
       .post('http://localhost:3001/registerInCourse', {
         usuario_id: usuarioId,
@@ -37,6 +50,9 @@ export class DetalhesCursoComponent {
       .subscribe(
         (response) => {
           console.log('Usuário cadastrado no curso com sucesso', response);
+
+          // Exibe uma mensagem de sucesso
+          alert('Usuário cadastrado no curso com sucesso');
         },
         (error) => {
           console.error('Erro ao cadastrar usuário no curso', error);

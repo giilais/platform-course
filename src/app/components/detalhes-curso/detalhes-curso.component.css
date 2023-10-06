@@ -41,13 +41,17 @@ a:hover {
   box-shadow: 0 2px 4px rgba(32, 32, 32, 0.521);
   margin: 10px;
   padding: 20px;
-  width: 500px;
-  height: 600px;
+  width: 700px;
+  height: 800px;
   box-sizing: border-box;
-  max-width: 500px;
   box-sizing: border-box;
 }
 
+.img-curso{
+  width: 450px;
+  height: 250px;
+  margin-left: 80px;
+}
 .card h2 {
   font-family: "Montserrat", sans-serif;
   font-size: 40px;

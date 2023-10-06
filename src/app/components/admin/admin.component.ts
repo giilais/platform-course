@@ -21,17 +21,13 @@ export class AdminComponent {
   }
 
   excluirCurso(cursoId: number) {
-    this.cursoService.excluirCurso(cursoId).subscribe(
-      (response) => {
-        console.log('Curso excluído com sucesso!', response);
-        alert('Curso excluído com sucesso!'); // Exibe um alerta de sucesso
-        window.location.reload(); // Recarrega a página para atualizar a lista de cursos
-      },
-      (error) => {
-        console.error('Erro ao excluir curso:', error);
-        alert('Erro ao excluir curso. Por favor, tente novamente.'); // Exibe um alerta de erro
-      }
-    );
+    this.cursoService.excluirCurso(cursoId).subscribe((response) => {
+      console.log('Curso excluído com sucesso!', response);
+      alert('Curso excluído com sucesso!'); // Exibe um alerta de sucesso
+      window.location.reload(); // Recarrega a página para atualizar a lista de cursos
+    });
+    alert('Curso excluído com sucesso!');
+    window.location.reload();
   }
 
   confirmarExclusao(cursoId: number) {

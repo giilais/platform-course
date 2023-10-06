@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,15 +9,6 @@ export class CursoService {
   private apiUrl = 'http://localhost:3001/cursos';
 
   constructor(private http: HttpClient) {}
-
-  private cursos: any[] = [
-    {
-      id: 1,
-      titulo: 'Curso de Angular',
-      imagem: 'url_da_imagem_angular',
-      descricao: 'Aprenda Angular de forma fácil e rápida.',
-    },
-  ];
 
   adicionarCurso(cursoData: any) {
     return this.http.post(`${this.apiUrl}/adicionar`, cursoData, {
@@ -30,7 +21,12 @@ export class CursoService {
   }
 
   excluirCurso(cursoId: number) {
-    return this.http.delete(`${this.apiUrl}/excluir/${cursoId}`);
+    return this.http.delete(`${this.apiUrl}/excluir/${cursoId}`).pipe(
+      catchError((error) => {
+        console.error('Erro ao excluir curso:', error);
+        return throwError('Ocorreu um erro ao excluir o curso. Por favor, tente novamente.');
+      })
+    );
   }
 
   inscreverUsuarioNoCurso(cursoId: number): Observable<any> {
@@ -41,7 +37,7 @@ export class CursoService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  getDetalhesCurso(cursoId: number): any {
-    return this.cursos.find((curso) => curso.id === cursoId);
+  getDetalhesCurso(cursoId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${cursoId}`);
   }
 }

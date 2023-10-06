@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -8,11 +9,35 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class PerfilUsuarioComponent {
   usuario: any;
+  numeroDeCursos: number = 0;
+  isAdmin: boolean = false;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private authService: AuthService) {
+    this.numeroDeCursos = 0;
+  }
 
   ngOnInit() {
-    // Supondo que você tenha um serviço para obter o perfil do usuário
-    this.usuario = this.usuarioService.getPerfilUsuario();
+    console.log('Usuario:', this.usuario);
+    console.log('Numero de Cursos:', this.numeroDeCursos);
+
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+
+    if (isAdmin) {
+      this.isAdmin = true;
+    }
+
+    this.usuario = this.authService.getUsuario();
+
+    if (this.usuario && this.usuario.id) {
+      // Verifica se o usuário e o ID não são nulos
+      this.authService.getNumeroDeCursos(this.usuario.id).subscribe(
+        (numero) => {
+          this.numeroDeCursos = numero;
+        },
+        (error) => {
+          console.error('Erro ao obter o número de cursos', error);
+        }
+      );
+    }
   }
 }

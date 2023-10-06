@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CursoService } from './../../services/curso.service';
 import { Component } from '@angular/core';
 
@@ -15,7 +16,7 @@ export class AdicionarCursoComponent {
     imagem: '',
   };
 
-  constructor(private cursoService: CursoService) {}
+  constructor(private cursoService: CursoService, private router: Router) {}
 
   adicionarCurso() {
     this.cursoService.adicionarCurso(this.curso).subscribe(
@@ -33,6 +34,8 @@ export class AdicionarCursoComponent {
         console.error('Erro ao adicionar curso:', error);
       }
     );
+    alert("Alterações Salvas!");
+    this.router.navigate(['/']);
   }
 
   onFileSelected(event: any) {

@@ -28,3 +28,58 @@ a {
 a:hover {
   color: rgb(201, 154, 255);
 }
+
+.container {
+  display: flex;
+  direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.adicionarCurso {
+  width: auto;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(32, 32, 32, 0.521);
+  padding: 75px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+h2 {
+  font-size: 50px;
+  font-weight: 400;
+}
+
+label {
+  font-size: 20px;
+}
+
+.item {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.btn-card {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card-button {
+  font-family: "Montserrat", sans-serif;
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #000000;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: background-color 0.3s;
+  width: 250px;
+  height: 50px;
+}

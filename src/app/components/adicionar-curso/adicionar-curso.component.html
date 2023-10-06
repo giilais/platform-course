@@ -14,52 +14,55 @@
   </nav>
 </header>
 
-
-<div>
-  <h2>Adicionar Novo Curso</h2>
-  <form (ngSubmit)="adicionarCurso()">
-    <div>
-      <label for="titulo">Título:</label>
-      <input
-        type="text"
-        id="titulo"
-        [(ngModel)]="curso.titulo"
-        name="titulo"
-        required
-      />
-    </div>
-    <div>
-      <label for="descricao">Descrição:</label>
-      <textarea
-        id="descricao"
-        [(ngModel)]="curso.descricao"
-        name="descricao"
-        required
-      ></textarea>
-    </div>
-    <div>
-      <label for="descricaoCompleta">Descrição Completa:</label>
-      <textarea
-        id="descricaoCompleta"
-        [(ngModel)]="curso.descricaoCompleta"
-        name="descricaoCompleta"
-        required
-      ></textarea>
-    </div>
-    <div>
-      <label for="topicos">Tópicos:</label>
-      <input
-        type="text"
-        id="topicos"
-        [(ngModel)]="curso.topicos"
-        name="topicos"
-        required
-      />
-    </div>
-    <div>
-      <label for="imagem">Imagem (URL):</label>
-      <input type="file" (change)="onFileSelected($event)" name="file" />
-    </div>
-    <button type="submit">Salvar Edições</button>
-  </form>
+<div class="container">
+  <div class="adicionarCurso">
+    <h2>Adicionar novo curso</h2>
+    <form (ngSubmit)="adicionarCurso()">
+      <div class="item">
+        <label for="titulo">Título:</label>
+        <input
+          type="text"
+          id="titulo"
+          [(ngModel)]="curso.titulo"
+          name="titulo"
+          required
+        />
+      </div>
+      <div class="item">
+        <label for="descricao">Descrição:</label>
+        <textarea
+          id="descricao"
+          [(ngModel)]="curso.descricao"
+          name="descricao"
+          required
+        ></textarea>
+      </div>
+      <div class="item">
+        <label for="descricaoCompleta">Descrição Completa:</label>
+        <textarea
+          id="descricaoCompleta"
+          [(ngModel)]="curso.descricaoCompleta"
+          name="descricaoCompleta"
+          required
+        ></textarea>
+      </div>
+      <div class="item">
+        <label for="topicos">Tópicos:</label>
+        <input
+          type="text"
+          id="topicos"
+          [(ngModel)]="curso.topicos"
+          name="topicos"
+          required
+        />
+      </div>
+      <div class="item">
+        <label for="imagem">Imagem (URL):</label>
+        <input type="file" (change)="onFileSelected($event)" name="file" />
+      </div>
+      <div class="btn-card">
+        <button class="card-button" type="submit">Salvar Edições</button>
+      </div>
+    </form>
+  </div>
 </div>
